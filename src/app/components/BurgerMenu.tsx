@@ -15,7 +15,7 @@ import Link from "next/link";
 import LogOutBtn from "./LogOutBtn";
 
 interface BurgerMenuProps {
-  session: Session;
+  session: Session | null;
 }
 
 function BurgerMenu({ session }: BurgerMenuProps) {
