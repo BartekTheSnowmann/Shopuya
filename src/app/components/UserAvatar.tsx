@@ -29,10 +29,12 @@ function UserAvatar({ session }: UserAvatarProps) {
     <Flex gap="2" className="items-center">
       <DropdownMenuRoot>
         <DropdownMenuTrigger>
-          <Avatar
-            src={user?.image as string}
-            fallback={user?.name?.slice(0, 1) as string}
-          />
+          <div>
+            <Avatar
+              src={user?.image as string}
+              fallback={user?.name?.slice(0, 1) as string}
+            />
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {/* <DropdownMenuSeparator /> */}
