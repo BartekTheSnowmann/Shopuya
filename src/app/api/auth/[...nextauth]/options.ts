@@ -39,4 +39,5 @@ export const authOptions: NextAuthOptions = {
       await removeCartFromCookies();
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
