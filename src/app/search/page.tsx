@@ -40,7 +40,7 @@ async function page({ searchParams: { query } }: SearchPageProps) {
       </h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {products.map((product: Product) => (
-          <Suspense fallback={<BarLoading />}>
+          <Suspense key={`suspense-${product.id}`} fallback={<BarLoading />}>
             <ProductCard key={product.id} product={product} />
           </Suspense>
         ))}
