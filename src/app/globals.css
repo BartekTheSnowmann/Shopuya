@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -18,10 +18,28 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(59 130 246);
+} */
+
+input,
+textarea {
+  @apply w-60 rounded-md border-none  px-4 py-2 text-dark outline-none;
+}
+
+select {
+  @apply border-none outline-none;
+}
+
+li {
+  @apply cursor-pointer;
+}
+
+@layer utilities {
+  .section__height {
+    height: calc(100vh - 80px);
+  }
+}
+
+Button {
+  @apply duration-300 hover:cursor-pointer hover:bg-blue-200;
 }
