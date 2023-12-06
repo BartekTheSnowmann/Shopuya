@@ -26,6 +26,17 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
+        if (!user) {
+          console.log("nie znaleziono tego uzytkownika");
+          return null;
+        }
+
+        const isPwdMatching = user.password === credentials?.password;
+        if (!isPwdMatching) {
+          console.log("Password is not correct");
+          return null;
+        }
+
         return user;
       },
     }),
