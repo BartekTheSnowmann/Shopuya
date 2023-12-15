@@ -1,7 +1,6 @@
 "use client";
 import { Product } from "@prisma/client";
 import { Button } from "@radix-ui/themes";
-import { redirect } from "next/navigation";
 import React from "react";
 
 import { useRouter } from "next/navigation";

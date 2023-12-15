@@ -1,22 +1,13 @@
 import React from "react";
 import { Session } from "next-auth";
-import Image from "next/image";
 import LogOutBtn from "./LogOutBtn";
 import {
   Avatar,
-  Button,
-  DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuRoot,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   Flex,
 } from "@radix-ui/themes";
-import { CaretDownIcon } from "@radix-ui/react-icons";
 
 interface UserAvatarProps {
   session?: Session;
@@ -36,7 +27,7 @@ function UserAvatar({ session }: UserAvatarProps) {
             />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="hidden md:block">
           {/* <DropdownMenuSeparator /> */}
           <LogOutBtn>Sign Out</LogOutBtn>
         </DropdownMenuContent>

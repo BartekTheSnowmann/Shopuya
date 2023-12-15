@@ -1,6 +1,15 @@
 import prisma from "@/lib/db/prisma";
 import React from "react";
 import { redirect } from "next/navigation";
+import {
+  Button,
+  Heading,
+  TextArea,
+  TextFieldInput,
+  TextFieldSlot,
+} from "@radix-ui/themes";
+import Mango from "@/../public/mango.jpg";
+import Image from "next/image";
 
 async function page() {
   async function createUser(formData: FormData) {
@@ -14,6 +23,17 @@ async function page() {
 
     if (!name || !username || !email || !password) throw Error();
 
+    const isUserInDb = await prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+
+    if (isUserInDb) {
+      console.log("user already in db");
+      return;
+    }
+
     const newUser = await prisma.user.create({
       data: {
         name,
@@ -24,20 +44,73 @@ async function page() {
       },
     });
 
-    console.log(newUser);
     redirect("/");
   }
 
   return (
-    <section className="p-4">
-      <form className="flex flex-col items-start gap-4" action={createUser}>
-        <input type="text" name="name" placeholder="name" />
-        <input type="text" name="username" placeholder="username" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="url" name="imageUrl" placeholder="imageUrl" />
-        <input type="password" name="password" placeholder="password" />
-        <button className="bg-primary px-4 py-2">Submit</button>
-      </form>
+    <section className="px-4 py-16 text-zinc-800">
+      <div className="flex flex-wrap md:flex-nowrap md:bg-blue-400">
+        <div className="hidden w-1/2 md:block">
+          <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
+        </div>
+        <div className="flex w-full items-center justify-center md:w-1/2">
+          <div>
+            <div className="pb-8">
+              <Heading className="" size="8">
+                Create Account
+              </Heading>
+            </div>
+            <form className="flex w-full flex-col gap-4" action={createUser}>
+              <TextFieldSlot>
+                <TextFieldInput
+                  type="text"
+                  className="w-80"
+                  name="name"
+                  placeholder="name"
+                />
+              </TextFieldSlot>
+
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="text"
+                  name="username"
+                  placeholder="username"
+                />
+              </TextFieldSlot>
+
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                />
+              </TextFieldSlot>
+
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="url"
+                  name="imageUrl"
+                  placeholder="imageUrl"
+                />
+              </TextFieldSlot>
+
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                />
+              </TextFieldSlot>
+
+              <Button>Submit</Button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

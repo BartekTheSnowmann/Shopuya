@@ -39,6 +39,9 @@ function BurgerMenu({ session }: BurgerMenuProps) {
               <DropdownMenuSeparator />
               {user ? (
                 <>
+                  <div className="pb-2 pl-2">
+                    <UserAvatar session={session} />
+                  </div>
                   <LogOutBtn>Log Out</LogOutBtn>
                 </>
               ) : (

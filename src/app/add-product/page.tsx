@@ -8,6 +8,8 @@ import {
   TextFieldInput,
   TextFieldSlot,
 } from "@radix-ui/themes";
+import Mango from "@/../public/mango.jpg";
+import Image from "next/image";
 
 export const metadata = {
   title: "Add Product - Website Name",
@@ -39,25 +41,58 @@ async function addProduct(formData: FormData) {
 function page() {
   return (
     <section className="px-4 py-16 text-zinc-800">
-      <Heading className="pb-8" size="8">
-        Add product
-      </Heading>
-      <form className="flex flex-col items-start gap-4" action={addProduct}>
-        <TextFieldSlot>
-          <TextFieldInput type="text" name="name" placeholder="name..." />
-        </TextFieldSlot>
-
-        <TextArea name="description" placeholder="Reply to comment…" />
-
-        <TextFieldSlot>
-          <TextFieldInput type="url" name="imageUrl" placeholder="imageUrl…" />
-        </TextFieldSlot>
-        <TextFieldSlot>
-          <TextFieldInput type="number" name="price" placeholder="price" />
-        </TextFieldSlot>
-
-        <FormBtn>Submit</FormBtn>
-      </form>
+      <div className="flex flex-wrap md:flex-nowrap md:bg-blue-400">
+        <div className="hidden w-1/2 md:block">
+          <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
+        </div>
+        <div className="flex w-full items-center justify-center md:w-1/2">
+          <div>
+            <div className="pb-8">
+              <Heading className="" size="8">
+                Add product
+              </Heading>
+              <p className="text-gray-600">Add Some Product to our shop!</p>
+            </div>
+            <form
+              className="flex flex-col items-stretch gap-4"
+              action={addProduct}
+            >
+              <TextFieldSlot className="w-full">
+                <TextFieldInput
+                  className="w-80"
+                  type="text"
+                  name="name"
+                  placeholder="name..."
+                />
+              </TextFieldSlot>
+              <TextFieldSlot>
+                <TextArea
+                  className="w-80"
+                  name="description"
+                  placeholder="Reply to comment…"
+                />
+              </TextFieldSlot>
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="url"
+                  name="imageUrl"
+                  placeholder="imageUrl…"
+                />
+              </TextFieldSlot>
+              <TextFieldSlot>
+                <TextFieldInput
+                  className="w-80"
+                  type="number"
+                  name="price"
+                  placeholder="price"
+                />
+              </TextFieldSlot>
+              <FormBtn className="w-full">Submit</FormBtn>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

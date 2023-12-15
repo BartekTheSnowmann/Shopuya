@@ -5,6 +5,7 @@ import changeQuantity from "./actions";
 import { Button, Heading } from "@radix-ui/themes";
 import FormatPrice from "@/lib/db/utils/formatPrice";
 import CheckoutBtn from "./CheckoutBtn";
+import { Frown } from "lucide-react";
 
 async function page() {
   const cartItems = await getCart();
@@ -12,7 +13,10 @@ async function page() {
   if (!cartItems?.items.length) {
     return (
       <div className="px-4 py-24">
-        <Heading size="6">No items to display</Heading>
+        <div className="flex gap-x-2">
+          <Heading size="6">No items to display</Heading>
+          <Frown className="h-8 w-8" />
+        </div>
       </div>
     );
   }

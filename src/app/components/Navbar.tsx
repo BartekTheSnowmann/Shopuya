@@ -1,19 +1,17 @@
-import { Search } from "lucide-react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 import UserAvatar from "./UserAvatar";
 import {
   Button,
   IconButton,
-  TextField,
   TextFieldInput,
   TextFieldRoot,
   TextFieldSlot,
 } from "@radix-ui/themes";
-import { HamburgerMenuIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import BurgerMenu from "./BurgerMenu";
 import Shopuya from "../../../public/shopuya.png";
 import Image from "next/image";
@@ -30,7 +28,7 @@ async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <nav className="sticky top-0 z-50 flex h-20 items-center bg-white shadow-md">
+    <nav className="sticky top-0 z-50 flex h-20 items-center bg-white shadow-md dark:bg-dark">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
         <Link href="/">
           <Image src={Shopuya} alt="Shopuya" height={60} width={60} />
