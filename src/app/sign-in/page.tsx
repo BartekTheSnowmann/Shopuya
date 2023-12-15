@@ -12,7 +12,7 @@ import Mango from "@/../public/mango.jpg";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 
-function page() {
+function Page() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -77,4 +77,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
