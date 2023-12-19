@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import Mango from "@/../public/mango.jpg";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 function Page() {
   const [username, setUsername] = useState("");
@@ -30,7 +31,7 @@ function Page() {
 
   return (
     <section className="px-4 py-16 text-zinc-800">
-      <div className="flex flex-wrap md:flex-nowrap md:bg-blue-400">
+      <div className="flex flex-wrap bg-light py-12 md:flex-nowrap md:py-0">
         <div className="hidden w-1/2 md:block">
           <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
         </div>
@@ -40,7 +41,14 @@ function Page() {
               <Heading className="" size="8">
                 Sign In
               </Heading>
-              <p className="text-gray-600">Welcome Back Brother!</p>
+              <div>
+                <span className="text-muted flex items-center gap-x-1 text-sm">
+                  No Account?
+                  <Button asChild className="font-semibold" variant="ghost">
+                    <Link href={"/sign-up"}>Sign up</Link>
+                  </Button>
+                </span>
+              </div>
             </div>
             <form
               onSubmit={handleSubmit}

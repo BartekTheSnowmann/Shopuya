@@ -4,16 +4,16 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import Navbar from "./components/Navbar";
-import ThemeProvider from "./components/ThemeProvider";
 import AuthProvider from "@/context/AuthProvider";
 import Footer from "./components/Footer";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Shopuya",
   description: "A higher form of shopping.",
+  metadataBase: new URL("https://shopuya-bysnowmann.netlify.app/"),
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme appearance="dark" accentColor="blue">
+        <Theme appearance="light" accentColor="blue">
           <AuthProvider>
             <Navbar />
             <Toaster richColors />

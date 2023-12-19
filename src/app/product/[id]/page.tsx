@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 import FormatPrice from "@/lib/db/utils/formatPrice";
-import { Flex, Heading } from "@radix-ui/themes";
+import { Flex, Heading, Text } from "@radix-ui/themes";
 import BuyBtn from "./BuyBtn";
 
 interface ProductPageProps {
@@ -24,7 +24,7 @@ async function page({ params: { id } }: ProductPageProps) {
   }
 
   return (
-    <section className="flex flex-col justify-center gap-4 px-4 py-16  md:flex-row md:items-center md:justify-normal">
+    <section className="flex flex-col justify-center gap-4 px-4 py-16 md:flex-row md:items-center md:justify-normal">
       <div className="mx-auto flex w-fit flex-col md:mx-0 md:flex-row md:items-center">
         <figure className="border-b-2 md:border-b-0 md:border-r-2">
           <Image
@@ -43,7 +43,7 @@ async function page({ params: { id } }: ProductPageProps) {
           <Heading size={"8"} className="drop-shadow-md">
             {product.name}
           </Heading>
-          <p className="text-xl">{product.description}</p>
+          <Text>{product.description}</Text>
           <Flex align="center">
             <BuyBtn product={product}>Buy</BuyBtn>
             <FormatPrice price={product.price} />

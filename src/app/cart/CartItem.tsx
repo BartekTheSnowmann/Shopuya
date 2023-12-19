@@ -3,8 +3,8 @@ import { Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import React, { useTransition } from "react";
 import FormatPrice from "@/lib/db/utils/formatPrice";
-import BarLoader from "@/app/loading";
 import { toast } from "sonner";
+import { Loader } from "lucide-react";
 
 type CartItemProps = {
   cartItem: {
@@ -39,7 +39,7 @@ function CartItemComponent({ cartItem, changeQuantity }: CartItemProps) {
   }
 
   return (
-    <div className="border-md flex gap-x-4 bg-blue-200 p-4">
+    <div className="border-md flex flex-col gap-4 bg-blue-200 p-4 md:flex-row">
       <Image
         className="h-60 w-60 object-cover"
         src={cartItem.product.imageUrl}
@@ -47,35 +47,43 @@ function CartItemComponent({ cartItem, changeQuantity }: CartItemProps) {
         height={200}
         width={200}
       />
-      <div className="flex flex-col justify-between">
-        <Heading>{cartItem.product.name}</Heading>
-        <Text>{cartItem.product.description}</Text>
-
-        <div className="flex flex-col">
+      <div className="flex w-full flex-col justify-between gap-4 md:flex-row">
+        <div className="flex flex-col justify-between">
           <div>
-            Quantity:
-            <select
-              className="flex max-w-[80px] flex-col gap-2"
-              defaultValue={cartItem.quantity}
-              onChange={(e) => {
-                const newQuantity = parseInt(e.currentTarget.value);
-                startTransition(async () => {
-                  await changeQuantity(cartItem.product.id, newQuantity);
-                  toast.success("Quantity has changed!");
-                });
-              }}
-            >
-              <option value={0}>0 (Remove)</option>
-              {quantityOptions}
-            </select>
+            <div>
+              <Heading size={"6"} className="drop-shadow-md">
+                {cartItem.product.name}
+              </Heading>
+              <div className="divider mt-1" />
+            </div>
+            <Text className="my-4 block capitalize">
+              {cartItem.product.description}
+            </Text>
           </div>
-        </div>
-        <div className="mt-2">
           {isPending ? (
-            "Changing Quantity..."
+            <div>
+              <Loader className="animate-spin text-primary" />
+            </div>
           ) : (
             <FormatPrice className="w-16" price={itemCost} />
           )}
+        </div>
+
+        <div className="flex flex-col">
+          <select
+            className="flex max-w-[80px] flex-col gap-2"
+            defaultValue={cartItem.quantity}
+            onChange={(e) => {
+              const newQuantity = parseInt(e.currentTarget.value);
+              startTransition(async () => {
+                await changeQuantity(cartItem.product.id, newQuantity);
+                toast.success("Quantity has changed!");
+              });
+            }}
+          >
+            <option value={0}>0 (Remove)</option>
+            {quantityOptions}
+          </select>
         </div>
       </div>
     </div>

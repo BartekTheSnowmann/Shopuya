@@ -41,7 +41,7 @@ async function addProduct(formData: FormData) {
 function page() {
   return (
     <section className="px-4 py-16 text-zinc-800">
-      <div className="flex flex-wrap md:flex-nowrap md:bg-blue-400">
+      <div className="flex flex-wrap bg-light py-8 md:flex-nowrap md:py-0">
         <div className="hidden w-1/2 md:block">
           <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
         </div>

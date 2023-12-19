@@ -4,12 +4,12 @@ import { redirect } from "next/navigation";
 import {
   Button,
   Heading,
-  TextArea,
   TextFieldInput,
   TextFieldSlot,
 } from "@radix-ui/themes";
 import Mango from "@/../public/mango.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 async function page() {
   async function createUser(formData: FormData) {
@@ -30,11 +30,10 @@ async function page() {
     });
 
     if (isUserInDb) {
-      console.log("user already in db");
       return;
     }
 
-    const newUser = await prisma.user.create({
+    await prisma.user.create({
       data: {
         name,
         username,
@@ -49,7 +48,7 @@ async function page() {
 
   return (
     <section className="px-4 py-16 text-zinc-800">
-      <div className="flex flex-wrap md:flex-nowrap md:bg-blue-400">
+      <div className="flex flex-wrap bg-light py-12 md:flex-nowrap md:py-0">
         <div className="hidden w-1/2 md:block">
           <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
         </div>
@@ -59,6 +58,12 @@ async function page() {
               <Heading className="" size="8">
                 Create Account
               </Heading>
+              <span className="text-muted flex items-center gap-x-1 text-sm">
+                Already Have an Account?
+                <Button asChild className="font-semibold" variant="ghost">
+                  <Link href={"/sign-in"}>Sign in</Link>
+                </Button>
+              </span>
             </div>
             <form className="flex w-full flex-col gap-4" action={createUser}>
               <TextFieldSlot>

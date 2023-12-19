@@ -2,23 +2,16 @@ import React from "react";
 import { getCart } from "../product/[id]/actions";
 import CartItem from "./CartItem";
 import changeQuantity from "./actions";
-import { Button, Heading } from "@radix-ui/themes";
+import { Button } from "@radix-ui/themes";
 import FormatPrice from "@/lib/db/utils/formatPrice";
 import CheckoutBtn from "./CheckoutBtn";
-import { Frown } from "lucide-react";
+import EmptyCart from "../components/EmptyCart";
 
 async function page() {
   const cartItems = await getCart();
 
   if (!cartItems?.items.length) {
-    return (
-      <div className="px-4 py-24">
-        <div className="flex gap-x-2">
-          <Heading size="6">No items to display</Heading>
-          <Frown className="h-8 w-8" />
-        </div>
-      </div>
-    );
+    return <EmptyCart />;
   }
 
   let price = cartItems.items
