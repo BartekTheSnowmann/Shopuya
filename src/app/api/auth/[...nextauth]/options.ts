@@ -27,13 +27,11 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (!user) {
-          console.log("nie znaleziono tego uzytkownika");
           return null;
         }
 
         const isPwdMatching = user.password === credentials?.password;
         if (!isPwdMatching) {
-          console.log("Password is not correct");
           return null;
         }
 
@@ -43,7 +41,6 @@ export const authOptions: NextAuthOptions = {
   ],
   events: {
     async signIn({ user }) {
-      console.log(user.id);
       await margeCarts(user.id);
     },
     async signOut() {

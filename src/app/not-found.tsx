@@ -7,7 +7,7 @@ import React from "react";
 import NotFoundUfo from "@/../public/svg/not_found_ufo.svg";
 import { useRouter } from "next/navigation";
 
-function notFound() {
+function NotFound() {
   const router = useRouter();
 
   return (
@@ -40,4 +40,4 @@ function notFound() {
   );
 }
 
-export default notFound;
+export default NotFound;
