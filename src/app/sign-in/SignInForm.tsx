@@ -63,7 +63,7 @@ function SignInForm() {
 
     try {
       const login = await signIn("credentials", {
-        callbackUrl: "/cart",
+        callbackUrl: "/",
         redirect: false,
         username,
         password,
@@ -72,7 +72,7 @@ function SignInForm() {
         setIsPending(false);
         toast.success(`Welcome back ${username}!`);
         router.refresh();
-        router.push("/cart");
+        router.push("/");
       } else {
         setIsPending(false);
         toast.error("User not Found 🙃. You might have misspelled something");

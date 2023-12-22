@@ -1,4 +1,7 @@
-import { margeCarts, removeCartFromCookies } from "@/app/product/[id]/actions";
+import {
+  getCartAfterSignIn,
+  removeCartFromCookies,
+} from "@/app/product/[id]/actions";
 import prisma from "@/lib/db/prisma";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -41,11 +44,20 @@ export const authOptions: NextAuthOptions = {
   ],
   events: {
     async signIn({ user }) {
-      await margeCarts(user.id);
+      await getCartAfterSignIn(user.id);
     },
     async signOut() {
       await removeCartFromCookies();
     },
+  },
+  callbacks: {
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub,
+      },
+    }),
   },
   pages: {
     signIn: "/sign-in",

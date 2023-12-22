@@ -33,7 +33,7 @@ function BuyBtn({ product, children }: BuyBtnProps) {
       radius="none"
       disabled={isPending}
     >
-      {isPending ? <Loader className="animate-spin text-primary" /> : children}
+      {isPending ? <Loader className="animate-spin text-light" /> : children}
     </Button>
   );
 }

@@ -67,56 +67,94 @@ export async function addProductToCart(productId: string | any): Promise<any> {
   revalidatePath("/cart");
 }
 
-export async function createCart() {
-  const session = await getServerSession(authOptions);
-  if (session) {
-    // console.log(session.user);
-
-    const newPrismaCart = await prisma.cart.create({ data: {} });
-    const userCart = cookies().set("localCart", newPrismaCart.id);
-    return userCart;
-  }
-
-  const newPrismaCart = await prisma.cart.create({ data: {} });
-  const userCart = cookies().set("localCart", newPrismaCart.id);
-  return userCart;
-}
-
-export async function getCart() {
-  const localCartId = cookies().get("localCart")?.value;
-  if (!localCartId) {
-    return undefined;
-  } else {
-    const userCart = await prisma.cart.findFirst({
-      where: {
-        id: localCartId,
-      },
-      include: {
-        items: { include: { product: true } },
+export async function createCart(userId?: string) {
+  //  Jesli logujesz sie i nie ma carta
+  if (userId) {
+    const newCart = await prisma.cart.create({
+      data: {
+        userId: userId,
       },
     });
-
-    return userCart;
+    if (newCart) {
+      cookies().set("localCart", newCart.id);
+      return newCart;
+    }
+  } else {
+    //  Nie ma carta po prostu
+    const session = await getServerSession(authOptions);
+    if (session) {
+      const newCart = await prisma.cart.create({
+        data: {
+          userId: session?.user.id,
+        },
+      });
+      cookies().set("localCart", newCart.id);
+      return newCart;
+    } else {
+      const newCart = await prisma.cart.create({ data: {} });
+      cookies().set("localCart", newCart.id);
+      return newCart;
+    }
   }
 }
 
-export async function margeCarts(userId: string) {
+export async function getCart(userId?: string) {
+  let userCart;
+
   const session = await getServerSession(authOptions);
 
-  const userCart = await prisma.cart.findFirst({
+  if (session?.user) {
+    // Session
+    const hasCart = await prisma.cart.findFirst({
+      where: {
+        userId: session.user.id,
+      },
+      include: {
+        items: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+    if (hasCart) {
+      userCart = hasCart;
+      return userCart;
+    }
+  } else {
+    // No Session
+    const localCartId = cookies().get("localCart")?.value;
+    if (localCartId) {
+      const hasCart = await prisma.cart.findFirst({
+        where: {
+          id: localCartId,
+        },
+        include: {
+          items: { include: { product: true } },
+        },
+      });
+
+      userCart = hasCart;
+      return userCart;
+    } else {
+      return undefined;
+    }
+  }
+}
+export async function getCartAfterSignIn(userId: string) {
+  removeCartFromCookies();
+  const hasCart = await prisma.cart.findFirst({
     where: {
-      userId: session?.user.id,
+      userId: userId,
     },
   });
-  if (userCart) {
-    // console.log(userCart);
+  if (hasCart) {
+    cookies().set("localCart", hasCart.id);
   } else {
-    // console.log("nie ma, trzeba utowrzyc");
+    await createCart(userId);
   }
-
-  cookies().set("localCart", userCart?.id!);
 }
 
 export async function removeCartFromCookies() {
-  const userCart = cookies().set("localCart", "");
+  cookies().delete("localCart");
 }

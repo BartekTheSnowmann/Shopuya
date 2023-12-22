@@ -3,10 +3,12 @@
 import { getCart } from "../product/[id]/actions";
 import prisma from "@/lib/db/prisma";
 import { revalidatePath } from "next/cache";
-import { getServerSession } from "next-auth";
 import { cookies } from "next/dist/client/components/headers";
 
-export default async function changeQuantity(productId: any, quantity: number) {
+export default async function changeQuantity(
+  productId: string,
+  quantity: number,
+) {
   const cart = await getCart();
 
   const articleInCart = cart?.items.find(
@@ -51,7 +53,7 @@ export default async function changeQuantity(productId: any, quantity: number) {
 
 export async function checkout() {
   const localCartId = cookies().get("localCart")?.value;
-  const userCart = await prisma.cart.findFirst({
+  await prisma.cart.findFirst({
     where: {
       id: localCartId,
     },

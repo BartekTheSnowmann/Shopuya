@@ -47,12 +47,12 @@ function BurgerMenu({ session }: BurgerMenuProps) {
                 </>
               ) : (
                 <ul className="flex flex-col gap-2">
-                  <Link href="sign-up">
+                  <Link href="/sign-up">
                     <Button className="w-full" variant="solid">
                       Sign up
                     </Button>
                   </Link>
-                  <Link href="api/auth/signin">
+                  <Link href="/sign-in">
                     <Button
                       className="w-full hover:text-light"
                       variant="outline"
