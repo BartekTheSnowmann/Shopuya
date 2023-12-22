@@ -1,7 +1,6 @@
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import React from "react";
-import FormBtn from "../components/formBtn";
 import {
   Heading,
   TextArea,
@@ -11,6 +10,7 @@ import {
 
 import ShopuyaBg4 from "@/../public/shopuya_exclusive/shopuyaBg2_4.png";
 import Image from "next/image";
+import FormBtn from "../components/formBtn";
 
 export const metadata = {
   title: "Add Product - Website Name",

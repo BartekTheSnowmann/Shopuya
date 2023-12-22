@@ -1,13 +1,13 @@
 "use client";
 
 import { Badge, TextFieldInput, TextFieldSlot } from "@radix-ui/themes";
-import FormBtn from "../components/formBtn";
 import React, { useState } from "react";
 import { createUser, newUserData } from "./actions";
 import { newUserSchema } from "@/lib/db/validators/userValidation";
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
+import FormBtn from "../components/formBtn";
 
 type TstateError = {
   isError: boolean | null;
