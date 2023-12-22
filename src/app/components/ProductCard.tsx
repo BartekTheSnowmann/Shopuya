@@ -4,7 +4,6 @@ import React from "react";
 import FormatPrice from "@/lib/db/utils/formatPrice";
 import Link from "next/link";
 import { Badge, Button, Flex, Heading, Text } from "@radix-ui/themes";
-import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface ProductCardProps {
   product: Product;
@@ -16,10 +15,10 @@ function ProductCard({ product }: ProductCardProps) {
     1000 * 60 * 60 * 24 * 3;
 
   return (
-    <div className="flex flex-col justify-between text-dark shadow-lg">
-      <figure className="relative aspect-square h-80">
+    <div className="group flex flex-col justify-between bg-light text-dark shadow-sm shadow-primary">
+      <figure className="group relative aspect-square h-80 cursor-pointer overflow-hidden">
         <Image
-          className="h-full object-cover"
+          className="h-full object-cover duration-300 group-hover:scale-105"
           src={product.imageUrl}
           alt={product.name}
           height={900}
@@ -39,30 +38,31 @@ function ProductCard({ product }: ProductCardProps) {
         gap="2"
         className="h-48 p-4 font-bold"
       >
-        <Heading className="drop-shadow-md" size="6">
-          {product.name}
-        </Heading>
-        <Flex>
-          {[...Array(5).keys()].map((i) => (
-            <React.Fragment key={i}>
-              <StarFilledIcon color="orange" />
-            </React.Fragment>
-          ))}
-        </Flex>
-
-        <Flex
-          className="w-full flex-col items-start justify-between md:flex-row"
-          gap="2"
-        >
-          <Text className="font-normal text-zinc-800 first-letter:uppercase">
-            {product.description?.length > 80
-              ? product.description.slice(0, 80) + "..."
-              : product.description}
-          </Text>
-        </Flex>
+        <div className="w-full">
+          <div className="">
+            {/* border-b-2 border-secondary */}
+            <Heading className="mb-2 drop-shadow-sm" size="6">
+              {product.name}
+            </Heading>
+          </div>
+          <Flex
+            className="mt-2 w-full flex-col items-start justify-between md:flex-row"
+            gap="2"
+          >
+            <Text className="font-medium text-muted first-letter:uppercase">
+              {product.description?.length > 80
+                ? product.description.slice(0, 80) + "..."
+                : product.description}
+            </Text>
+          </Flex>
+        </div>
         <Flex>
           <Link href={`/product/${product.id}`}>
-            <Button radius="none" variant="surface">
+            <Button
+              className="hover:text-light"
+              radius="none"
+              variant="surface"
+            >
               More Details
             </Button>
           </Link>

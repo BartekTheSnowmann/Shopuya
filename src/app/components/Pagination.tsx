@@ -13,7 +13,7 @@ interface paginationProps {
 }
 
 function Pagination({ products, perPage, currentPage }: paginationProps) {
-  let numbers = Math.floor(products.length / perPage);
+  let numbers = Math.ceil(products.length / perPage);
 
   let arr = [];
   for (let i = 1; i <= numbers; i++) {
@@ -36,7 +36,7 @@ function Pagination({ products, perPage, currentPage }: paginationProps) {
       </Button>
       <Button
         onClick={() => router.push(`/?query=${currentPage + 1}`)}
-        disabled={currentPage > numbers}
+        disabled={currentPage == numbers}
       >
         <ChevronRight />
       </Button>

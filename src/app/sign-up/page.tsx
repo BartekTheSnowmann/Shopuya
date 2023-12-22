@@ -7,7 +7,7 @@ import {
   TextFieldInput,
   TextFieldSlot,
 } from "@radix-ui/themes";
-import Mango from "@/../public/mango.jpg";
+import ShopuyaBg from "@/../public/shopuya_exclusive/shopuyaBg.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -47,10 +47,16 @@ async function page() {
   }
 
   return (
-    <section className="px-4 py-16 text-zinc-800">
-      <div className="flex flex-wrap bg-light py-12 md:flex-nowrap md:py-0">
-        <div className="hidden w-1/2 md:block">
-          <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
+    <section className="py-16 sm:px-4">
+      <div className="mx-auto flex w-fit flex-wrap rounded-md bg-light px-4 py-10 shadow-md sm:px-12 sm:py-16 md:w-full md:flex-nowrap md:px-0 md:py-0">
+        <div className="hidden w-1/2 rounded-md bg-[#6E56CF] md:block">
+          <Image
+            className="w-full rounded-md shadow-md"
+            src={ShopuyaBg}
+            aria-hidden
+            alt="Mango Wallpaper"
+            role="presentation"
+          />
         </div>
         <div className="flex w-full items-center justify-center md:w-1/2">
           <div>
@@ -58,7 +64,7 @@ async function page() {
               <Heading className="" size="8">
                 Create Account
               </Heading>
-              <span className="text-muted flex items-center gap-x-1 text-sm">
+              <span className="flex items-center gap-x-1 text-sm text-muted">
                 Already Have an Account?
                 <Button asChild className="font-semibold" variant="ghost">
                   <Link href={"/sign-in"}>Sign in</Link>

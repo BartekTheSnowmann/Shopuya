@@ -9,7 +9,7 @@ import {
   Flex,
 } from "@radix-ui/themes";
 import { Session } from "next-auth";
-import React, { useState } from "react";
+import React from "react";
 import UserAvatar from "./UserAvatar";
 import Link from "next/link";
 import LogOutBtn from "./LogOutBtn";
@@ -29,10 +29,10 @@ function BurgerMenu({ session }: BurgerMenuProps) {
             <DropdownMenuTrigger>
               <HamburgerMenuIcon height="18" width="18" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <Link href="/add-product">
+            <DropdownMenuContent className="mt-2 font-medium">
+              {/* <Link href="/add-product">
                 <DropdownMenuItem>Add Product</DropdownMenuItem>
-              </Link>
+              </Link> */}
               <Link href="/cart">
                 <DropdownMenuItem>Cart</DropdownMenuItem>
               </Link>

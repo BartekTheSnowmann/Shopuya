@@ -21,10 +21,34 @@ li {
   }
 
   .divider {
-    @apply h-1 w-20 bg-blue-500;
+    @apply h-[2px] w-20 bg-primary;
   }
 }
 
 Button {
-  @apply duration-300 hover:cursor-pointer hover:bg-blue-200;
+  @apply duration-300 hover:cursor-pointer hover:bg-primary;
+}
+
+.rt-Badge {
+  @apply p-1 uppercase tracking-wider;
+}
+
+.border-img {
+  width: 100%;
+  height: 2px;
+  border-top: 2px solid white;
+  border-image-source: radial-gradient(
+    circle at top right,
+    #6e56cf,
+    transparent 70%
+  );
+  border-image-slice: 1;
+}
+
+.mask_img {
+  mask-image: radial-gradient(rgba(0, 0, 0, 1) 40%, red 90%);
+}
+
+ul {
+  @apply font-medium text-muted;
 }

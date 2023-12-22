@@ -6,6 +6,7 @@ import React, { useTransition } from "react";
 import { addProductToCart } from "./actions";
 import BarLoader from "@/app/loading";
 import { toast } from "sonner";
+import { Loader } from "lucide-react";
 
 interface BuyBtnProps {
   product: Product;
@@ -32,7 +33,7 @@ function BuyBtn({ product, children }: BuyBtnProps) {
       radius="none"
       disabled={isPending}
     >
-      {isPending ? <BarLoader /> : children}
+      {isPending ? <Loader className="animate-spin text-primary" /> : children}
     </Button>
   );
 }

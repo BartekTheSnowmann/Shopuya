@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import AuthProvider from "@/context/AuthProvider";
 import Footer from "./components/Footer";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Theme appearance="light" accentColor="blue">
+    <html suppressHydrationWarning lang="en">
+      <body className={`${inter.className} bg-blue-50`}>
+        <Theme
+          appearance="light"
+          accentColor="violet"
+          grayColor="slate"
+          radius="small"
+          scaling="95%"
+        >
           <AuthProvider>
             <Navbar />
             <Toaster richColors />

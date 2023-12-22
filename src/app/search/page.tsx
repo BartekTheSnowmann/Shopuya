@@ -5,6 +5,8 @@ import ProductCard from "../components/ProductCard";
 import { Frown } from "lucide-react";
 import { Suspense } from "react";
 import BarLoading from "@/app/loading";
+import SearchedProducts from "./SearchedProducts";
+import ProductSkeleton from "../product/[id]/ProductSkeleton";
 
 interface SearchPageProps {
   searchParams: {
@@ -34,17 +36,10 @@ async function page({ searchParams: { query } }: SearchPageProps) {
   }
 
   return (
-    <section className="px-4 py-16 text-zinc-800">
-      <h1 className="mb-4 text-3xl font-bold">
-        {products.length} Results for {query}
-      </h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        {products.map((product: Product) => (
-          <Suspense key={`suspense-${product.id}`} fallback={<BarLoading />}>
-            <ProductCard key={product.id} product={product} />
-          </Suspense>
-        ))}
-      </div>
+    <section className="px-4 py-16">
+      <Suspense fallback={<ProductSkeleton />}>
+        <SearchedProducts products={products} query={query} />
+      </Suspense>
     </section>
   );
 }

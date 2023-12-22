@@ -13,15 +13,8 @@ function FormBtn({ children, className, ...props }: FormBtnProps) {
   const { pending } = useFormStatus();
 
   return (
-    <Button>
-      <button
-        {...props}
-        className={`${className}`}
-        type="submit"
-        disabled={pending}
-      >
-        {pending ? "Adding..." : children}
-      </button>
+    <Button className={`${className}`} disabled={pending}>
+      {pending ? "Adding..." : children}
     </Button>
   );
 }

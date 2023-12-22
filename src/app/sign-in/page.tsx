@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/themes";
 import Image from "next/image";
 import React, { useState } from "react";
-import Mango from "@/../public/mango.jpg";
+import ShopuyaBg from "@/../public/shopuya_exclusive/shopuyaBg.png";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -30,19 +30,23 @@ function Page() {
   };
 
   return (
-    <section className="px-4 py-16 text-zinc-800">
-      <div className="flex flex-wrap bg-light py-12 md:flex-nowrap md:py-0">
-        <div className="hidden w-1/2 md:block">
-          <Image src={Mango} aria-hidden alt="Mango Wallpaper" />
+    <section className="py-16 sm:px-4">
+      <div className="mx-auto flex w-fit flex-wrap rounded-md bg-light px-4 py-10 shadow-md sm:px-12 sm:py-16 md:w-full md:flex-nowrap md:px-0 md:py-0">
+        <div className="hidden w-1/2 rounded-md bg-[#6E56CF] md:block">
+          <Image
+            className="w-full rounded-md shadow-md"
+            src={ShopuyaBg}
+            aria-hidden
+            alt="Mango Wallpaper"
+            role="presentation"
+          />
         </div>
         <div className="flex w-full items-center justify-center md:w-1/2">
           <div>
             <div className="pb-8">
-              <Heading className="" size="8">
-                Sign In
-              </Heading>
+              <Heading size="8">Sign In</Heading>
               <div>
-                <span className="text-muted flex items-center gap-x-1 text-sm">
+                <span className="flex items-center gap-x-1 text-sm text-muted">
                   No Account?
                   <Button asChild className="font-semibold" variant="ghost">
                     <Link href={"/sign-up"}>Sign up</Link>

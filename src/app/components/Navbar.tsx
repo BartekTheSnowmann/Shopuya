@@ -13,7 +13,7 @@ import {
 } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import BurgerMenu from "./BurgerMenu";
-import Shopuya from "../../../public/shopuya.png";
+import Shopuya from "../../../public/shopuya_exclusive/shopuyanobg2.png";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 
@@ -30,7 +30,7 @@ async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <nav className="sticky top-0 z-50 flex h-20 items-center bg-white shadow-md">
+    <nav className="sticky top-0 z-50 flex h-20 items-center bg-light shadow-md">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
         <Link href="/">
           <Image src={Shopuya} alt="Shopuya" height={60} width={60} />
@@ -62,10 +62,10 @@ async function Navbar() {
                 <Button variant="solid">Sign up</Button>
               </Link>
               <Link href="/sign-in">
-                <Button variant="outline">Sign In</Button>
+                <Button variant="surface">Sign In</Button>
               </Link>
               <Link href={"/cart"} className="ml-4">
-                <ShoppingCart className="" />
+                <ShoppingCart />
               </Link>
             </ul>
           )}
