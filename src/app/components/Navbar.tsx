@@ -33,12 +33,12 @@ async function Navbar() {
     <nav className="sticky top-0 z-50 flex h-20 items-center bg-light shadow-md">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
         <Link href="/">
-          <Image src={Shopuya} alt="Shopuya" height={60} width={60} />
+          <Image src={Shopuya} priority alt="Shopuya" height={60} width={60} />
         </Link>
 
         <form action={searchForItem}>
           <TextFieldRoot>
-            <TextFieldInput placeholder="Katana..." name="query" />
+            <TextFieldInput placeholder="Nike Vintage..." name="query" />
             <TextFieldSlot>
               <IconButton variant="ghost">
                 <MagnifyingGlassIcon height="18" width="18" />
@@ -56,19 +56,24 @@ async function Navbar() {
             </div>
           )}
 
-          {!session?.user && (
-            <ul className="flex items-center gap-x-2 px-4">
-              <Link href="/sign-up">
-                <Button variant="solid">Sign up</Button>
-              </Link>
-              <Link href="/sign-in">
-                <Button variant="surface">Sign In</Button>
-              </Link>
-              <Link href={"/cart"} className="ml-4">
-                <ShoppingCart />
-              </Link>
-            </ul>
-          )}
+          <ul className="flex items-center gap-x-2 px-4">
+            {!session?.user && (
+              <>
+                <Link href="/sign-up">
+                  <Button variant="solid">Sign up</Button>
+                </Link>
+                <Link href="/sign-in">
+                  <Button className="hover:text-light" variant="surface">
+                    Sign In
+                  </Button>
+                </Link>
+              </>
+            )}
+
+            <Link href={"/cart"} className="ml-4">
+              <ShoppingCart />
+            </Link>
+          </ul>
         </div>
       </div>
     </nav>

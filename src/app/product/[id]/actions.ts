@@ -70,7 +70,7 @@ export async function addProductToCart(productId: string | any): Promise<any> {
 export async function createCart() {
   const session = await getServerSession(authOptions);
   if (session) {
-    console.log(session.user);
+    // console.log(session.user);
 
     const newPrismaCart = await prisma.cart.create({ data: {} });
     const userCart = cookies().set("localCart", newPrismaCart.id);
@@ -109,9 +109,9 @@ export async function margeCarts(userId: string) {
     },
   });
   if (userCart) {
-    console.log(userCart);
+    // console.log(userCart);
   } else {
-    console.log("nie ma, trzeba utowrzyc");
+    // console.log("nie ma, trzeba utowrzyc");
   }
 
   cookies().set("localCart", userCart?.id!);

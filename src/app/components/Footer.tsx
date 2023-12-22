@@ -15,7 +15,7 @@ function Footer() {
     <footer className="mx-auto max-w-7xl border-primary">
       <div className="mx-4 flex flex-col border-t-2 border-primary px-4 py-12">
         <Link className="mx-auto" href="/">
-          <Image src={Shopuya} alt="Shopuya" height={60} width={60} />
+          <Image src={Shopuya} priority alt="Shopuya" height={60} width={60} />
         </Link>
 
         <ul className="mx-auto mb-10 mt-6 flex items-center gap-x-8 text-muted">

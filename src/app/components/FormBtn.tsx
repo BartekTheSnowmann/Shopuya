@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@radix-ui/themes";
+import { Loader } from "lucide-react";
 import React, { ComponentProps } from "react";
 import { useFormStatus } from "react-dom";
 
@@ -14,7 +15,7 @@ function FormBtn({ children, className, ...props }: FormBtnProps) {
 
   return (
     <Button className={`${className}`} disabled={pending}>
-      {pending ? "Adding..." : children}
+      {pending ? <Loader className="animate-spin text-white" /> : children}
     </Button>
   );
 }

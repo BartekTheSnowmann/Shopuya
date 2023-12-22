@@ -1,20 +1,15 @@
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import React from "react";
-import FormBtn from "../components/FormBtn";
+import FormBtn from "../components/formBtn";
 import {
-  Badge,
   Heading,
   TextArea,
   TextFieldInput,
   TextFieldSlot,
 } from "@radix-ui/themes";
-// import ShopuyaBg from "@/../public/shopuya_exclusive/shopuyaBg.png";
-import ShopuyaBg1 from "@/../public/shopuya_exclusive/shopuyaBg2_1.png";
-import ShopuyaBg2 from "@/../public/shopuya_exclusive/shopuyaBg2_2.png";
-import ShopuyaBg3 from "@/../public/shopuya_exclusive/shopuyaBg2_3.png";
+
 import ShopuyaBg4 from "@/../public/shopuya_exclusive/shopuyaBg2_4.png";
-import ShopuyaBg5 from "@/../public/shopuya_exclusive/shopuyaBg2_5.png";
 import Image from "next/image";
 
 export const metadata = {

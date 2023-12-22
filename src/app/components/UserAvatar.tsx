@@ -5,6 +5,7 @@ import {
   Avatar,
   DropdownMenuContent,
   DropdownMenuRoot,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
   Flex,
 } from "@radix-ui/themes";
@@ -22,13 +23,17 @@ function UserAvatar({ session }: UserAvatarProps) {
         <DropdownMenuTrigger>
           <div>
             <Avatar
+              className="shadow-md"
+              radius="large"
               src={user?.image as string}
               fallback={user?.name?.slice(0, 1) as string}
             />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="hidden md:block">
-          {/* <DropdownMenuSeparator /> */}
+          <span className="mx-1 block font-medium">{session?.user.name}</span>
+
+          <DropdownMenuSeparator />
           <LogOutBtn>Sign Out</LogOutBtn>
         </DropdownMenuContent>
       </DropdownMenuRoot>
