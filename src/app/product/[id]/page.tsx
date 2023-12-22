@@ -21,7 +21,7 @@ export async function generateMetadata({
     },
   });
   return {
-    title: product?.name + "- Anime Kisu",
+    title: product?.name + " - Shopuya",
     description:
       product?.description && product.description.slice(0, 80) + "...",
     openGraph: {

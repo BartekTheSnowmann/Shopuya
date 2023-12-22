@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Shopuya",
-  description: "A higher form of shopping.",
+  description: "A Higher Form of Shopping",
   metadataBase: new URL("https://shopuya-bysnowmann.netlify.app/"),
 };
 
