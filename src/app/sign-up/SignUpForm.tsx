@@ -7,7 +7,7 @@ import { newUserSchema } from "@/lib/db/validators/userValidation";
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
-import FormBtn from "../components/formBtn";
+import FormBtn from "../components/FormBtn";
 
 type TstateError = {
   isError: boolean | null;

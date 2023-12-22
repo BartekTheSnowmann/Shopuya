@@ -10,7 +10,7 @@ import {
 
 import ShopuyaBg4 from "@/../public/shopuya_exclusive/shopuyaBg2_4.png";
 import Image from "next/image";
-import FormBtn from "../components/formBtn";
+import FormBtn from "../components/FormBtn";
 
 export const metadata = {
   title: "Add Product - Website Name",
