@@ -6,11 +6,11 @@
 
 ###
 
-<p align="left">- A Higher Form of Shopping -</p>
+<h5 align="left">- A Higher Form of Shopping -</h5>
 
 ###
 
-<p align="left">Shopuya is a FullStack Ecommerce app with various features. Products are mostly clothing based.</p>
+<h5 align="left">🌠 Shopuya is a FullStack Ecommerce app with various features. Products are mostly clothing based 🌠</h5>
 
 ###
 
